@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="&copy; Ronald Santiago. Todos los derechos reservados.">
+    <title>CALCULADORA NUTRICIONAL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+
+
+    
+    <header>
+        <h1>CALCULADORA NUTRICIONAL</h1>
+    </header>
+    <main>
+
+        <article class="container--redes" id="my-redesIconRigth">
+            <!--incio de el primer icono-->
+              <div class="icon">
+                <a class="icon-primary color-linkedin" href="https://www.linkedin.com/in/ronald-santiago-jaime-duran/">in</a>	
+          
+                <div class="container-description">
+                  <a class="icon-description" href="#">Búscame en LinkedIn</a>	
+                </div>
+              </div>
+            <!--incio segundo icono-->
+              <div class="icon">
+                <a class="icon-primary color-twitter ion-social-github" href="https://github.com/Ronald-jsd"></a>	
+          
+                <div class="container-description ">
+                  <a  class="icon-description color-twitter" href="#">Búscame en GitHub</a>	
+                </div>
+              </div>
+          </article>
+
+          
+        
+        <section class="calculator" id="calculator">
+            <!-- CUADRO DE DATOS BÁSICOS -->
+            <div class="datos-section">
+                <h2>DATOS BÁSICOS</h2>
+                <div class="input-group">
+                    <label for="age">Edad (años):</label>
+                    <input type="number" id="age" placeholder="Ej. 30">
+                </div>
+                <div class="input-group">
+                    <label for="height">Altura (cm):</label>
+                    <input type="number" id="height" placeholder="Ej. 170">
+                </div>
+                <div class="input-group">
+                    <label for="weight">Peso (kg):</label>
+                    <input type="number" id="weight" placeholder="Ej. 70">
+                </div>
+                <div class="input-group">
+                    <label for="waist">Circunferencia de Cintura (cm):</label>
+                    <input type="number" id="waist" placeholder="Ej. 80">
+                </div>
+                <!-- <div class="input-group">
+                    <label for="calf">Circunferencia de Pantorrilla (cm):</label>
+                    <input type="number" id="calf" placeholder="Ej. 40">
+                </div> -->
+                <div class="input-group">
+                    <label for="sex">Sexo:</label>
+                    <select id="sex">
+                        <option value="male">Masculino</option>
+                        <option value="female">Femenino</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="formula">Fórmula para Peso Ideal:</label>
+                    <select id="formula">
+                        <option value="broca">Broca</option>
+                        <option value="lorentz">Lorentz</option>
+                        <option value="miller">Miller</option>
+                        <option value="hamwi">Hamwi</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="bmrFormula">Fórmula para TMB:</label>
+                    <select id="bmrFormula">
+                        <option value="harris-benedict">Harris-Benedict</option>
+                        <option value="mifflin-st-jeor">Mifflin-St Jeor</option>
+                        <option value="katch-mcardle">Katch-McArdle</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="activity">Factor de Actividad:</label>
+                    <select id="activity">
+                        <option value="1.2">Sedentario (poco o ningún ejercicio)</option>
+                        <option value="1.375">Ligero (ejercicio ligero/sesiones deportivas 1-3 días a la semana)
+                        </option>
+                        <option value="1.55">Moderado (ejercicio moderado/sesiones deportivas 3-5 días a la semana)
+                        </option>
+                        <option value="1.725">Activo (ejercicio fuerte/sesiones deportivas 6-7 días a la semana)
+                        </option>
+                        <option value="1.9">Muy activo (ejercicio intenso/sesiones deportivas dos veces al día)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="tea">Efecto Térmico de los Alimentos (%):</label>
+                    <input type="number" id="tea" value="10" min="10" disabled>
+                    <div id="mensajeError" style="color: red; display: none;">El valor debe ser mayor a 10.</div>
+                </div>
+                <div class="input-group">
+                    <label for="calorieAdjust">Ajuste Calórico (kcal):</label>
+                    <input type="number" id="calorieAdjust" value="0"
+                        placeholder="Ej. Mantenimiento: 0 / Deficit: -500 / Superavit: 500">
+                    <span> <small> "Ej. Mantenimiento: 0 / Deficit: -500 / Superávit: 500" </small> </span>
+                </div>
+                <button id="calculateBtn">Calcular</button>
+            </div>
+
+
+            <!-- CUADRO DE RESULTADOS -->
+            <div class="results">
+                <div class="title-results">
+                    <h2>RESULTADO</h2>
+                </div>
+
+                <span class="clasificacionTitle">IMC: </span>
+                <p id="bmiResult"> </p>
+
+                <span class="clasificacionTitle"> Clasificación IMC: </span>
+                <p id="clasiBmiResult"> </p>
+
+                <span class="clasificacionTitle"> Peso Ideal Teorico: </span>
+                <p id="idealWeightResult"> </p>
+
+                <span class="clasificacionTitle">Riesgo Cardiovascular: </span>
+                <p id="waistResultado"> </p>
+
+                <span class="clasificacionTitle"> Porcentaje de Grasa: </span>
+                <p id="fatPercentageResult"> </p>
+
+                <span class="clasificacionTitle"> Clasificación del %Grasa: </span>
+                <p id="fatPercentageClassiResult"> </p>
+
+                <span class="clasificacionTitle"> Tasa Metabólica Basal: </span>
+                <p id="bmrResult"> </p>
+
+                <span class="clasificacionTitle"> Ingesta Calórica Total: </span>
+                <p id="totalCaloricIntakeResult"> </p>
+            </div>
+        </section>
+    </main>
+    <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
+
+
+    <!-- -----------SECCION INFORMACION NUTRICIONAL---------------------------------------------------- -->
+    <hr>
+    <div class="section-nutricion">
+        <h2 class="title-sect2">INFORMACIÓN NUTRICIONAL</h2>
+        <div class="section">
+            <h2>Índice de Masa Corporal (IMC)</h2>
+            <p><strong>¿Qué es?</strong></p>
+            <p>El Índice de Masa Corporal (IMC) es una medida que se utiliza para determinar si una persona tiene un
+                peso saludable en relación con su altura. Es una herramienta ampliamente utilizada para identificar
+                posibles problemas de peso en adultos o en el area de la salud.</p>
+            <p>Sin embargo es solo una guía debido a que la mejor opción es una evaluación antropométrica mas completa
+                donde se evalúe tu porcentaje de grasa y masa muscular </p>
+            <p><strong>¿Cuál es la fórmula?</strong></p>
+            <p>La fórmula para calcular el IMC es la siguiente:</p>
+            <pre>IMC = peso (kg) / altura (m)<sup>2</sup>   </pre>
+            <p><strong>¿Cuál es la clasificación?</strong></p>
+            <table>
+                <tr>
+                    <th>IMC</th>
+                    <th>Clasificación</th>
+                </tr>
+                <tr>
+                    <td>&lt; 18.5</td>
+                    <td>Bajo Peso</td>
+                </tr>
+                <tr>
+                    <td>18.5 - 24.9</td>
+                    <td>Peso Normal</td>
+                </tr>
+                <tr>
+                    <td>25 - 29.9</td>
+                    <td>Sobrepeso</td>
+                </tr>
+                <tr>
+                    <td>30 - 34.9</td>
+                    <td>Obesidad Tipo 1</td>
+                </tr>
+                <tr>
+                    <td>35 - 39.9</td>
+                    <td>Obesidad Tipo 2</td>
+                </tr>
+                <tr>
+                    <td>&ge; 40</td>
+                    <td>Obesidad Tipo 3</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Peso Ideal</h2>
+            <p><strong>¿Qué es?</strong></p>
+            <p>El peso ideal es solo una estimación del peso corporal que se considera óptimo para la salud de una
+                persona, basado en su altura. Existen varias fórmulas para calcular el peso ideal, que pueden variar
+                ligeramente en sus resultados.</p>
+            <p><strong>¿Cuál es la fórmula?</strong></p>
+            <p>Las fórmulas para calcular el peso ideal son las siguientes:</p>
+            <ul>
+                <li><strong>Broca:</strong> Peso Ideal = altura (cm) - 100
+                </li> <br>
+                <li><strong>Lorentz:</strong> <br>
+                    Peso Ideal Hombres = altura (cm) - 100 - ((altura (cm) - 150) / 4) <br>
+                    Peso Ideal Mujeres = altura (cm) - 100 - ((altura (cm) - 150) / 2.5)
+                </li>
+                    <!-- <li><strong>Miller:</strong> Peso Ideal = 56.2 + 1.41 * ((altura (cm) / 2.54) - 60)</li>
+                <li><strong>Hamwi:</strong> Peso Ideal = 48.0 + 2.7 * ((altura (cm) / 2.54) - 60)</li> -->
+            </ul> 
+                <p><strong>¿Cuál es la clasificación?</strong></p>
+                <p>No hay una clasificación estándar para el peso ideal, ya que este valor varía según la fórmula
+                    utilizada. Se considera una guía aproximada para mantener un peso saludable.</p>
+        </div>
+
+        <div class="section">
+            <h2>Porcentaje de Grasa Corporal</h2>
+            <p><strong>¿Qué es?</strong></p>
+            <p>El porcentaje de grasa corporal es una medida del porcentaje de grasa en relación con el peso total del
+                cuerpo. Es un indicador importante de la composición corporal y de la salud general de una persona.</p>
+            <p><strong>¿Cuál es la fórmula?</strong></p>
+            <p>La fórmula para calcular el porcentaje de grasa corporal que se utilizo fue la "Formula de CUN-BAE" y es la siguiente:</p>
+            <pre class="pre-formCunBae">[ %GC = -44,988+(0,503*edad) +(10,689 * sexo)
+            + (3,172 * IMC) - (0,026 * IMC<sup>2</sup>)
+            +(0,181 * IMC * sexo) - (0,02 * IMC * edad)
+            - (0,005 * IMC<sup>2</sup> * sexo) 
+            + (0,00021 * IMC<sup>2</sup> * edad)]</pre>
+            <p>(Donde varones, sexo = 0; y para mujeres, sexo = 1). Edad en años</p>
+            <p><strong>¿Cuál es la clasificación?</strong></p>
+
+            <h3>Hombres</h3>
+            <table>
+                <tr>
+                    <th>Edad</th>
+                    <th>Bajo en Grasa &lt; 8%</th>
+                    <th>Normal 8-20%</th>
+                    <th>Sobrepeso 20-25%</th>
+                    <th>Obesidad &gt; 25%</th>
+                </tr>
+                <tr>
+                    <td>20-39 años</td>
+                    <td>Bajo</td>
+                    <td>Normal</td>
+                    <td>Sobrepeso</td>
+                    <td>Obesidad</td>
+                </tr>
+                <tr>
+                    <td>40-59 años</td>
+                    <td>Bajo</td>
+                    <td>Normal</td>
+                    <td>Sobrepeso</td>
+                    <td>Obesidad</td>
+                </tr>
+                <tr>
+                    <td>60-79 años</td>
+                    <td>Bajo</td>
+                    <td>Normal</td>
+                    <td>Sobrepeso</td>
+                    <td>Obesidad</td>
+                </tr>
+            </table>
+
+            <h3>Mujeres</h3>
+            <table>
+                <tr>
+                    <th>Edad</th>
+                    <th>Bajo en Grasa &lt; 21%</th>
+                    <th>Normal 21-33%</th>
+                    <th>Sobrepeso 33-39%</th>
+                    <th>Obesidad &gt; 39%</th>
+                </tr>
+                <tr>
+                    <td>20-39 años</td>
+                    <td>Bajo</td>
+                    <td>Normal</td>
+                    <td>Sobrepeso</td>
+                    <td>Obesidad</td>
+                </tr>
+                <tr>
+                    <td>40-59 años</td>
+                    <td>Bajo</td>
+                    <td>Normal</td>
+                    <td>Sobrepeso</td>
+                    <td>Obesidad</td>
+                </tr>
+                <tr>
+                    <td>60-79 años</td>
+                    <td>Bajo</td>
+                    <td>Normal</td>
+                    <td>Sobrepeso</td>
+                    <td>Obesidad</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Circunferencia de Cintura</h2>
+            <p><strong>¿Qué es?</strong></p>
+            <p>La circunferencia de cintura es una medida de la grasa abdominal y es un buen indicador del riesgo de
+                enfermedades relacionadas con la obesidad, como enfermedades cardíacas y diabetes tipo 2.</p>
+            <p><strong>¿Cuál es la clasificación?</strong></p>
+            <table>
+                <tr>
+                    <th>Sexo</th>
+                    <th>Circunferencia de Cintura</th>
+                    <th>Clasificación</th>
+                </tr>
+                <tr>
+                    <td>Hombre</td>
+                    <td>&lt; 94 cm</td>
+                    <td>Bajo riesgo</td>
+                </tr>
+                <tr>
+                    <td>Hombre</td>
+                    <td>94-102 cm</td>
+                    <td>Riesgo elevado</td>
+                </tr>
+                <tr>
+                    <td>Hombre</td>
+                    <td>&gt; 102 cm</td>
+                    <td>Riesgo muy elevado</td>
+                </tr>
+                <tr>
+                    <td>Mujer</td>
+                    <td>&lt; 80 cm</td>
+                    <td>Bajo riesgo</td>
+                </tr>
+                <tr>
+                    <td>Mujer</td>
+                    <td>80-88 cm</td>
+                    <td>Riesgo elevado</td>
+                </tr>
+                <tr>
+                    <td>Mujer</td>
+                    <td>&gt; 88 cm</td>
+                    <td>Riesgo muy elevado</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Tasa Metabólica Basal (TMB)</h2>
+            <p><strong>¿Qué es?</strong></p>
+            <p>La Tasa Metabólica Basal (TMB) es la cantidad mínima de energía que el cuerpo necesita para mantener sus
+                funciones vitales en reposo, como la respiración, la circulación sanguínea y la regulación de la
+                temperatura corporal.</p>
+            <p><strong>¿Cuál es la fórmula?</strong></p>
+            <p>Las fórmulas para calcular la TMB son las siguientes:</p>
+            <ul>
+                <li><strong>Harris-Benedict:</strong>
+                    <ul>
+                        <li>Hombres: TMB = 66.473 + (13.751 * peso) + (5 * altura) - (6.7550 * edad)</li>
+                        <li>Mujeres: TMB = 655.1 + (9.463 * peso) + (1.8 * altura) - (4.6756 * edad)</li>
+                    </ul>
+                </li>
+                <br>
+                <li><strong>Mifflin-St Jeor:</strong>
+                    <ul>
+                        <li>Hombres: TMB = (10 * peso) + (6.25 * altura) - (5 * edad) + 5</li>
+                        <li>Mujeres: TMB = (10 * peso) + (6.25 * altura) - (5 * edad) - 161</li>
+                    </ul>
+                </li>
+                <br>
+                <li><strong>Katch-McArdle:</strong> TMB = 370 + (21.6 * Masa Magra(kg) )
+                    <ul>
+                        <li>Masa Grasa (kg) = %Grasa Corporal * Peso(kg) </li>
+                        <li>Masa Magra (kg) = Peso(kg) - Masa Grasa(kg) </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Efecto Térmico de los Alimentos</h2>
+            <p>El efecto térmico de los alimentos (ETA) es la cantidad de energía que el cuerpo utiliza para digerir,
+                absorber y metabolizar los nutrientes de los alimentos consumidos.</p>
+            <p>Para calcular tu metabolismo basal (TMB), que es la cantidad de calorías que tu cuerpo necesita para
+                mantener sus funciones vitales en reposo, puedes utilizar la fórmula de Harris-Benedict o Mifflin-St
+                Jeor.</p>
+            <p> Recomendamos completar con un valor mínimo de 10 en el recuadro</p>
+            <h2>Ajuste calórico</h2>
+            <p>El ajuste calórico es importante para lograr diferentes objetivos de composición corporal:</p>
+            <ul>
+                <li>Para mantener tu peso actual o una recomposición corporal, el ajuste calórico debe ser 0. Esto
+                    implica mantener el
+                    equilibrio entre la ganancia de masa muscular y la pérdida de grasa.</li> <br>
+                <li>Para crear un déficit calórico y perder peso, puedes reducir tu ingesta calórica en alrededor de 300
+                    calorías por día. (Ejemplo completar con: -300 ) </li> <br>
+                <li>Para ganar masa muscular o peso, puedes aumentar tu ingesta calórica en alrededor de 500 calorías
+                    por día para crear un superávit calórico. (Ejemplo completar con: 500) </li>
+            </ul>
+            <br>
+            <p> <small> <b>Nota: Recuerda que estos cálculos son estimaciones y es importante consultar siempre a un
+                        profesional de la salud para una correcta evaluación nutricional. </b> </small> </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="section-footer">
+            <p>&copy; 2024 Elaborado por Ronald Santiago.</p>
+            <div social-footer>
+                <!--Redes Sociales-->
+                <a class="ion-social-linkedin" href="https://www.linkedin.com/in/ronald-santiago-jaime-duran/"><span class="hidden">LinkedIn</span></a>
+                <a class="ion-social-github" href="https://github.com/Ronald-jsd"><span class="hidden">GitHub</span></a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

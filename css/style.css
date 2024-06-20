@@ -1,0 +1,362 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #6e8f6d;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    cursor: default;
+    width: 100%;
+    height: 100px;
+}
+
+header h1{
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    
+}
+
+/*Seccion 1 */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    /* height: calc(100vh - 60px); */
+}
+
+#calculator{
+    background-image: url(./img/tofu-nutrition.jpg) ;
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: soft-light;
+    background-size: cover;
+}
+
+.calculator {
+    background: rgba(255, 255, 255, 0.723); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top:50px;
+}
+
+
+
+.input-group {
+    margin-bottom: 15px;
+    width: 100;    
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
+.input-group input, .input-group select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px 10px 10px 0;
+}
+
+select{
+    background-color: #f6f6ee;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #6e8f6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #5daf61;
+}
+
+.datos-section{
+    border-right: 1px solid rgba(0, 0, 0, 0.175);
+    padding: 10px;
+}
+
+    
+/* CUADRO DE RESULTADOS */
+.results {
+    margin-top: 20px;
+    background-color: rgba(221, 224, 27, 0.477);
+    border: 1px solid rgba(128, 128, 128, 0.265);
+    border-radius: 10px;
+    height: 100%;
+    width: 50%;
+    margin-left: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s;
+    cursor: default;
+}
+.results:hover{
+    transition: 0.7s;
+    -webkit-box-shadow: 2px 10px 15px 20px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 2px 10px 15px 0px rgba(66, 68, 90, 1);
+    box-shadow: 2px 5px 15px 0px rgba(66, 68, 90, 1);
+}
+
+.title-results{
+    text-align: center;
+    color: #1c1d1d;
+    font-weight: bold;
+    }
+
+.results p {
+    background: #ffffff ;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    height: 20px;
+}
+
+.clasificacionTitle{
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+}
+/*Fin Sección 1 *-
+
+/* ---------SECTION 2 INFORMACIÓN NUTRICIONAL------------------- */
+
+.section-nutricion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    margin: 20px;
+    margin-bottom: 20px;
+}
+.section-nutricion .title-sect2{
+    text-align: center;
+    font-size: 25px;
+   
+    padding-top: 15px;
+}
+
+.section h2{
+background-color:#bae4bc ;
+padding: 7px;
+border-radius: 5px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 20px;
+}
+table, th, td {
+border: 1px solid #ddd;
+}
+th, td {
+padding: 8px;
+text-align: center;
+}
+th {
+background-color: #ece4e4;
+}
+
+pre{
+   font-size: 75%;
+}
+
+/* FOOTER----------- */
+
+.section-footer{
+    background-color: #0c0c0c;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hidden{
+    display: none;
+    font-size: 100px;
+}
+
+.social-footer a{
+    font-size: 3em;
+}
+
+a:not(last-child){
+  margin-right: 0.2em;
+}
+
+.ion-social-linkedin{
+    color: #7171ff;
+    font-size: 35px;
+}
+.ion-social-github{
+    color: #fffbfb;
+    font-size: 35px;
+}
+
+/* ------------------- */
+
+/* Botón UP */
+#myBtn {
+    
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijar en pantalla */
+    bottom: 20px; /* 20px desde abajo */
+    right: 10px; 
+    z-index: 9; 
+    border: none; 
+    outline: none; /* Sin contorno al enfocar */
+    background-color: red; 
+    color: white; 
+    cursor: pointer; 
+    padding: 15px; 
+    opacity: 0.7;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    align-items: center;
+    transition: 0.5s;
+  }
+
+  #myBtn:hover {
+    background-color: #555; 
+    transition: 0.5s;
+  }
+
+ 
+  
+    /**/
+
+    .container--redes{
+        width:50px;
+        right: 0;
+        position:fixed;
+        top:15%;
+        }
+      
+      
+      .icon{
+        top:50%;
+        position:relative;
+        margin-bottom:10px;
+        display: flex;
+        justify-content: end;
+        }
+      
+      .icon-primary{
+        display:inline-block;
+        text-decoration:none;
+        color:#fff;
+        background-color:#3b5998;
+        border-radius:100%;
+        position:relative;
+        z-index:1;
+        box-shadow:1px 0 1px rgba(0,0,0,.5);
+        height:40px;
+        width:40px;
+        text-align:center;
+        line-height:40px;
+        margin-right: 10px;
+        opacity: 0.9;
+        }
+      
+      .container-description{
+        overflow:hidden;
+        position:absolute;
+        top:0;
+        text-align: center;
+        margin-right: 5px;
+        border-radius: 20px;
+        /* left:24px; */
+      }
+      
+      .icon-description{
+        width:130px;
+        display:inline-block;
+        text-decoration:none;
+        color:#fff;
+        background-color:#2f5bb8;
+        height:40px;
+        line-height:40px;
+        padding-right: 40px;
+        border-radius:10px  40px 40px 40px;
+        transform: translate3d(110%, 0, 0);
+        transition:transform 175ms ease;
+        opacity:0.9 ;
+      }
+      
+      .icon-primary:hover  ~ .container-description .icon-description{
+           transform: translate(0, 0);
+      }
+      
+
+
+      /*colores para redes sociales*/
+      .color-linkedin{ 
+        background-color: #2f5bb8;
+        border: 1px solid rgba(255, 255, 255, 0.387);
+      }
+      .color-twitter{
+        background-color:#000000;
+        border: 1px solid rgba(255, 255, 255, 0.387);
+      }
+      
+
+
+
+       /**/
+@media screen and (max-width: 860px){
+    .calculator {
+        display: flex;
+        flex-direction: column;   
+        align-items: center;    
+    }
+    .datos-section{
+        border:none;
+    }
+    .results{
+        width: 90%;
+        margin-left: -5px;
+    }
+}
+
+@media screen and (max-width: 300px){
+    .calculator {  
+        align-items: center;     
+    }
+    .datos-section{
+        border:none;
+    }
+    .results{
+        width: 90%;
+    }
+    
+    }
