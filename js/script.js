@@ -10,10 +10,10 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
     const bmrFormula = document.getElementById('bmrFormula').value;
     const activity = parseFloat(document.getElementById('activity').value);
     const tea = parseFloat(document.getElementById('tea').value) / 100;
-    const calorieAdjust = parseFloat(document.getElementById('calorieAdjust').value);
+    const calorieAdjust = parseFloat(document.getElementById('calorieAdjust').value) || 0;
 
     //CÁLCULOS NUTRICIONALES
-    if (age && height && weight && waist && tea  /*&& calf*/) {
+    if (age && height && weight && waist && tea /*&& calf*/) {
 
         //Calculo de IMC
         const bmi = (weight / (height * height)).toFixed(2);
@@ -62,9 +62,9 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
                                                     
         document.getElementById('fatPercentageResult').innerText = `${fatPercentage.toFixed(2)}%`; //`Porcentaje de Grasa: ${fatPercentage.toFixed(2)}%`
 
-        //CLASIFICACION PORCENTAJE DE GRASA
+        //CLASIFICACIÓN PORCENTAJE DE GRASA
 
-        //clasificacion masculino
+        //clasificación masculino
         const RANGOS_HOMBRE = {
             '20-39': { bajo: 8, normalBajo: 8, normalAlto: 20, sobrepesoBajo: 20, sobrepesoAlto: 25 },
             '40-59': { bajo: 11, normalBajo: 11, normalAlto: 22, sobrepesoBajo: 22, sobrepesoAlto: 28 },
@@ -132,27 +132,25 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
         //ingesta total
         const totalCaloricIntake = (bmr * activity) + calorieAdjust + (bmr * tea);
         document.getElementById('totalCaloricIntakeResult').innerText = `${totalCaloricIntake.toFixed(2)} kcal`; //= `Ingesta Calórica Total: ${totalCaloricIntake.toFixed(2)} kcal`;
+        
+
     } else {
         alert('Por favor, ingresa valores válidos para todos los campos.');
     }
-
-    
-
 });//FIN DE FORMULAS NUTRICIONALES
 
-//validar efecto térmico -------------------
-document.getElementById('tea').addEventListener('input', function (e) {
-    var value = parseInt(e.target.value);
-    var mensajeError = document.getElementById('mensajeError');
-    if (value < 10) {
-        mensajeError.style.display = 'block';
-        e.target.value = '10'; // Limpiar el campo
-    } else {
-        mensajeError.style.display = 'none';
-    }
-});
+// validar  algún evento de error  a futuro-------------------    
+//  document.getElementById('calorieAdjust').addEventListener('input', function (e) {
+//      var value = parseInt(e.target.value);
+//      var mensajeError = document.getElementById('mensajeError');
+//      if (isNaN(value) || e.target.value.trim() === '') {
+//          mensajeError.style.display = 'block'; // Mostrar mensaje de error
+//      } else {
+//          mensajeError.style.display = 'none';
+//      }
+//  });
 
-//BOTÓN UP ---------------
+//BOTÓN UP EN PANTALLA ---------------
 // Mostrar botón para subir al inicio de la pagina
 window.onscroll = function () { scrollFunction() };
 

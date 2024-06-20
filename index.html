@@ -43,18 +43,22 @@
             <!-- CUADRO DE DATOS BÁSICOS -->
             <div class="datos-section">
                 <h2>DATOS BÁSICOS</h2>
+                <!-- edad -->
                 <div class="input-group">
                     <label for="age">Edad (años):</label>
                     <input type="number" id="age" placeholder="Ej. 30">
                 </div>
+                <!-- Altura -->
                 <div class="input-group">
                     <label for="height">Altura (cm):</label>
                     <input type="number" id="height" placeholder="Ej. 170">
                 </div>
+                <!-- peso -->
                 <div class="input-group">
                     <label for="weight">Peso (kg):</label>
                     <input type="number" id="weight" placeholder="Ej. 70">
                 </div>
+                <!-- cintura -->
                 <div class="input-group">
                     <label for="waist">Circunferencia de Cintura (cm):</label>
                     <input type="number" id="waist" placeholder="Ej. 80">
@@ -63,6 +67,7 @@
                     <label for="calf">Circunferencia de Pantorrilla (cm):</label>
                     <input type="number" id="calf" placeholder="Ej. 40">
                 </div> -->
+                <!-- sexo -->
                 <div class="input-group">
                     <label for="sex">Sexo:</label>
                     <select id="sex">
@@ -70,6 +75,7 @@
                         <option value="female">Femenino</option>
                     </select>
                 </div>
+                <!-- peso ideal -->
                 <div class="input-group">
                     <label for="formula">Fórmula para Peso Ideal:</label>
                     <select id="formula">
@@ -79,6 +85,7 @@
                         <option value="hamwi">Hamwi</option>
                     </select>
                 </div>
+                <!-- formula TMB -->
                 <div class="input-group">
                     <label for="bmrFormula">Fórmula para TMB:</label>
                     <select id="bmrFormula">
@@ -87,6 +94,7 @@
                         <option value="katch-mcardle">Katch-McArdle</option>
                     </select>
                 </div>
+                <!-- Factor de actividad -->
                 <div class="input-group">
                     <label for="activity">Factor de Actividad:</label>
                     <select id="activity">
@@ -100,15 +108,17 @@
                         <option value="1.9">Muy activo (ejercicio intenso/sesiones deportivas dos veces al día)</option>
                     </select>
                 </div>
+                <!-- efecto térmico de alimentos -->
                 <div class="input-group">
                     <label for="tea">Efecto Térmico de los Alimentos (%):</label>
                     <input type="number" id="tea" value="10" min="10" disabled>
-                    <div id="mensajeError" style="color: red; display: none;">El valor debe ser mayor a 10.</div>
                 </div>
+                <!-- ajuste calórico -->
                 <div class="input-group">
                     <label for="calorieAdjust">Ajuste Calórico (kcal):</label>
-                    <input type="number" id="calorieAdjust" value="0"
+                    <input type="number" id="calorieAdjust" value="0" min="-2000"
                         placeholder="Ej. Mantenimiento: 0 / Deficit: -500 / Superavit: 500">
+                        <div id=" " style="color: red; display: none;">Mensaje de error.</div>
                     <span> <small> "Ej. Mantenimiento: 0 / Deficit: -500 / Superávit: 500" </small> </span>
                 </div>
                 <button id="calculateBtn">Calcular</button>
@@ -150,7 +160,7 @@
     <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
 
 
-    <!-- -----------SECCION INFORMACION NUTRICIONAL---------------------------------------------------- -->
+    <!-- -----------SECCIÓN INFORMACIÓN NUTRICIONAL---------------------------------------------------- -->
     <hr>
     <div class="section-nutricion">
         <h2 class="title-sect2">INFORMACIÓN NUTRICIONAL</h2>
